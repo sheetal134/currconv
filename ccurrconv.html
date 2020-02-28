@@ -1,0 +1,72 @@
+<html>
+<head>
+<title> CUURRENCY CONVERTER</title>
+<style>
+#rect
+   {
+   width:400px;
+   height:150px;
+   margin:0px auto;
+   border:3px solid blue;
+   }
+   h1
+   {
+   text-align:center;
+   }
+   table
+   {
+   margin:0px auto;
+   }
+   </style>
+   <script>
+                function currcon()
+				{
+				var from=document.getElementById("from").value;
+				var to=document.getElementById("to").valuevar xmlhttp=new XMLHttpRequest();
+				var url="https://api.currencylayer.com/' + from+ ' + to;
+				xmlhttp.one("GET",url,true);
+				xmlhttp.onreadyStatechange=function()
+				{
+				if (xmlhttp.readystate==4 && xmlhttp.status==200)
+				{
+				var result=xmlhttp.responseText;
+				alert(result);
+				var JSONresult=JSON.parse(result);
+				var unit=jsResult.rates[to]/jsResult.rates[from];
+				var amt=document.getElementById("secondary currency").value;
+				document.getElementById("base currency").value=(unit*amt);
+				
+				
+				}
+				}
+				}
+				
+   
+   </script>
+  
+</head>
+<body  onload="currcon();" >
+<div id="rect">
+<h1 > <b>Currency Converter </h1></b>
+<table >
+<tr>
+<td><input id="secondary currency" type="text" size="13" value="1"></td>
+<td> <select id="from"  onchange="currcon();">
+<option value="SGD" > singapore dollar(SGD)</option>
+<option value="INR"selected >INDIAN RUPEE(INR)</option>
+</select>
+</td>
+</tr>
+<tr>
+<td><input id="base currency" type="text" size="13" ></td>
+<td><select id= "to" onchange=" currcon();">
+<option value="SGD"selected > singapore dollar(SGD)</option>
+<option value="INR" >INDIAN RUPEE(INR)</option>
+</select>
+
+</td>
+</tr>
+</div>
+</table>
+</body>
+</html>
